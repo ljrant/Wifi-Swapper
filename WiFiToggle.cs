@@ -143,20 +143,24 @@ internal sealed class TrayContext : ApplicationContext {
     if (letter != "?") lastProfile = letter;
     if (current != null) previousKnown = current;
     initialized = true;
-    DrawLetter(letter);
+    string label = String.IsNullOrWhiteSpace(current) ? "?" : current.Trim();
+    // Ilmoitusalueen kuvakkeessa näkyy verkkonimen alku; koko nimi näkyy vihjetekstissä.
+    if (label.Length > 2) label = label.Substring(0, 2);
+    DrawLetter(label.ToUpperInvariant(), letter);
   }
   string drawn;
-  void DrawLetter(string letter) {
-    if (letter == drawn) return; drawn = letter;
-    Color fill = letter == "A" ? Color.FromArgb(34, 112, 205) :
-      letter == "B" ? Color.FromArgb(18, 144, 118) : Color.Gray;
+  void DrawLetter(string label, string networkSide) {
+    string key = label + "|" + networkSide;
+    if (key == drawn) return; drawn = key;
+    Color fill = networkSide == "A" ? Color.FromArgb(34, 112, 205) :
+      networkSide == "B" ? Color.FromArgb(18, 144, 118) : Color.Gray;
     using (Bitmap bitmap = new Bitmap(32, 32))
     using (Graphics g = Graphics.FromImage(bitmap))
     using (SolidBrush brush = new SolidBrush(fill))
-    using (Font font = new Font("Segoe UI", 20, FontStyle.Bold, GraphicsUnit.Pixel)) {
+    using (Font font = new Font("Segoe UI", label.Length > 1 ? 15 : 20, FontStyle.Bold, GraphicsUnit.Pixel)) {
       g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
       g.Clear(Color.Transparent); g.FillEllipse(brush, 1, 1, 30, 30);
-      TextRenderer.DrawText(g, letter, font, new Rectangle(1, 0, 30, 31), Color.White,
+      TextRenderer.DrawText(g, label, font, new Rectangle(1, 0, 30, 31), Color.White,
         TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter | TextFormatFlags.NoPadding);
       IntPtr handle = bitmap.GetHicon();
       try {
