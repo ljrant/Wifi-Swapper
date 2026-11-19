@@ -18,11 +18,16 @@ try {
     & $csc /nologo /target:winexe /optimize+ ("/out:" + $exe) /reference:System.Windows.Forms.dll /reference:System.Drawing.dll $src
     if ($LASTEXITCODE -ne 0 -or -not (Test-Path $exe)) { throw 'Kääntäminen epäonnistui.' }
     $shell = New-Object -ComObject WScript.Shell
-    function Shortcut($path,$args,$desc) {
-        $shortcut = $shell.CreateShortcut($path)
+    function Shortcut {
+        param(
+            [Parameter(Mandatory=$true)][string]$ShortcutPath,
+            [Parameter(Mandatory=$true)][string]$LaunchMode,
+            [Parameter(Mandatory=$true)][string]$Description
+        )
+        $shortcut = $shell.CreateShortcut($ShortcutPath)
         $shortcut.TargetPath = $exe
-        $shortcut.Arguments = $args
-        $shortcut.Description = $desc
+        $shortcut.Arguments = [string]$LaunchMode
+        $shortcut.Description = $Description
         $shortcut.WorkingDirectory = $folder
         $shortcut.IconLocation = "$exe,0"
         $shortcut.Save()
