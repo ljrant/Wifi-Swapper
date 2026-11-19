@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="fi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Wi-Fi-vaihtaja</title><style>
+:root{font:16px system-ui,-apple-system,"Segoe UI",sans-serif;color:#17252c;background:#fafbfc}*{box-sizing:border-box}body{margin:0}main{max-width:730px;padding:65px 24px;margin:auto}h1{font-size:clamp(2.3rem,6vw,3.3rem);letter-spacing:-.05em;margin:0 0 15px}h2{margin:46px 0 16px;font-size:1.25rem}p,li{line-height:1.75}.lead,.muted{color:#52636b}.lead{font-size:1.13rem}.actions{display:flex;flex-wrap:wrap;gap:17px;align-items:center;margin:30px 0}a{color:#0063a4;text-underline-offset:3px}.button{padding:13px 19px;background:#17313d;border-radius:8px;color:white;text-decoration:none;font-weight:650}.button:hover{background:#2e5363}ol{padding-left:23px}li{margin-bottom:10px}code{background:#eaf0f3;padding:2px 5px;border-radius:4px}.pills{display:flex;gap:10px;margin:20px 0}.pill{color:white;background:#246bcc;padding:8px 15px;border-radius:20px;font-weight:700}.pill.b{background:#159677}.pill.q{background:#667078}details{border:1px solid #d8e0e5;background:white;border-radius:9px;margin:10px 0;overflow:hidden}summary{cursor:pointer;padding:15px 18px;font-weight:650}pre{background:#10222d;color:#f0f5f8;margin:0;padding:20px;overflow:auto;max-height:520px;font:12px/1.6 Consolas,monospace}pre code{background:transparent;color:inherit;padding:0}footer{border-top:1px solid #dbe1e5;padding-top:22px;margin-top:46px;color:#52636b;font-size:.9rem}
+</style></head><body><main>
+<h1>Wi-Fi-vaihtaja</h1>
+<p class="lead">Vaihda kahden Wi-Fi-verkon välillä yhdellä napsautuksella Windows 10/11 -tietokoneessa. Valitse verkot asennuksessa ja kiinnitä pikakuvake tehtäväpalkkiin.</p>
+<div class="actions"><a class="button" href="https://github.com/ljrant/Wifi-Swapper/archive/refs/heads/main.zip">Lataa ZIP</a><a href="https://github.com/ljrant/Wifi-Swapper">GitHub</a></div>
+<h2>Asennus</h2><ol>
+<li>Yhdistä molempiin Wi-Fi-verkkoihin Windowsissa vähintään kerran.</li>
+<li>Lataa ZIP yllä ja pura koko kansio.</li>
+<li>Kaksoisnapsauta <code>Install.cmd</code>-tiedostoa.</li>
+<li>Valitse <strong>Verkko A</strong> ja <strong>Verkko B</strong> ja paina <strong>Tallenna</strong>.</li>
+<li>Etsi Käynnistä-valikosta <strong>Wi-Fi-vaihtaja</strong>, napsauta hiiren oikealla ja valitse <strong>Kiinnitä tehtäväpalkkiin</strong>.</li>
+<li>Vaihda verkkoa napsauttamalla tehtäväpalkin kuvaketta.</li></ol>
+<h2>Huomaamaton ilmaisin</h2><div class="pills"><span class="pill">A</span><span class="pill b">B</span><span class="pill q">?</span></div>
+<p>Ilmoitusalueen kuvake kellon vieressä näyttää, kumpi valituista verkoista on käytössä. <strong>?</strong> tarkoittaa, ettei yhteyttä voida varmistaa. Hiiren osoitin kuvakkeen päällä näyttää verkon nimen. Vahvistettu vaihto näyttää lyhyen Windows-ilmoituksen, jos ilmoitukset on sallittu.</p>
+<p class="muted">Ilmaisin käynnistyy Windowsiin kirjautuessa. Ei erillistä avointa ikkunaa eikä Wi-Fi-salasanojen tallennusta. Verkkojen täytyy olla kuuluvuusalueella.</p>
+<h2>Lähdekoodi</h2><p class="muted">Avaa tiedostot suoraan sivulla:</p>
+<details data-source="WiFiToggle.cs"><summary>WiFiToggle.cs — sovellus</summary><pre><code>Ladataan…</code></pre></details>
+<details data-source="Install.ps1"><summary>Install.ps1 — asentaja</summary><pre><code>Ladataan…</code></pre></details>
+<details data-source="Install.cmd"><summary>Install.cmd — käynnistin</summary><pre><code>Ladataan…</code></pre></details>
+<footer>Windows 10/11 · Avoin lähdekoodi · Ei testattu Windows-laitteella · <a href="https://github.com/ljrant/Wifi-Swapper">Repositorio</a></footer>
+</main><script>
+document.querySelectorAll('details[data-source]').forEach(d=>d.addEventListener('toggle',async()=>{if(!d.open||d.dataset.loaded)return;d.dataset.loaded='1';let c=d.querySelector('code');try{let r=await fetch('./'+encodeURIComponent(d.dataset.source));if(!r.ok)throw Error('HTTP '+r.status);c.textContent=await r.text()}catch(e){c.textContent='Lähdekoodin lataus epäonnistui: '+e.message}}));
+</script></body></html>
