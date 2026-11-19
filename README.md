@@ -17,7 +17,7 @@ Valittuja verkkoja voi myöhemmin muuttaa Käynnistä-valikon **Vaihda Wi-Fi-vai
 
 ## Ilmaisin
 
-Ilmoitusalueen pieni kuvake kertoo verkon: **A**, **B** tai **?**, jos verkkoa ei voi varmistaa. Osoita kuvaketta hiirellä nähdäksesi nykyisen verkon nimen. Kun uusi yhteys havaitaan, Windows näyttää lyhyen ilmoituksen (jos ilmoitukset on sallittu). Ilmaisin käynnistyy kirjautuessa.
+Ilmoitusalueen pieni kuvake näyttää nykyisen verkkoprofiilin nimen kaksi ensimmäistä merkkiä. Kuvakkeen väri erottaa valitut verkot A (sininen) ja B (vihreä); harmaa tarkoittaa muuta verkkoa tai tuntematonta tilaa. Osoita kuvaketta hiirellä nähdäksesi koko verkon nimen. Kun uusi yhteys havaitaan, Windows näyttää lyhyen ilmoituksen (jos ilmoitukset on sallittu). Ilmaisin käynnistyy kirjautuessa.
 
 ## Tekniikka
 
